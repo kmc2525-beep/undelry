@@ -2,12 +2,9 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>Undelry | “想像が動き出す” 球体ロボット MARIMO</title>
+  <title>Undelry | MARIMO Concept</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="Undelry（ウンデリー）は、“想像が動き出す”球体ロボット MARIMO をテーマに、小さな試作と実験を続けている高専生三人の学生プロジェクトです。"
-  />
+
   <!-- フォント -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,6 +12,7 @@
     href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@500;700&display=swap"
     rel="stylesheet"
   />
+
   <style>
     :root {
       --bg: #ffffff;
@@ -24,32 +22,78 @@
       --text-sub: #444444;
       --line: #e2e2e2;
       --muted: #777777;
-      --font-sans: "Noto Sans JP", system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
+      --font-sans: "Noto Sans JP", sans-serif;
       --font-serif: "Noto Serif JP", serif;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
       background: var(--bg);
       color: var(--text-main);
       font-family: var(--font-sans);
+      line-height: 1.8;
       -webkit-font-smoothing: antialiased;
-      line-height: 1.9;
     }
 
-    a {
-      color: inherit;
+    /* ---------------- Header ---------------- */
+
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--line);
+      z-index: 10;
+    }
+
+    .nav {
+      width: min(1080px, 100% - 40px);
+      margin: 0 auto;
+      padding: 14px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      letter-spacing: 0.15em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      font-size: 12px;
+    }
+
+    .nav-links a {
       text-decoration: none;
+      position: relative;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 0;
+      height: 1px;
+      background: #000;
+      transition: width 0.2s ease-out;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* --------------- HERO ---------------- */
+
+    .hero {
+      padding: 80px 0 90px;
+      border-bottom: 1px solid var(--line);
     }
 
     .container {
@@ -57,96 +101,23 @@
       margin: 0 auto;
     }
 
-    /* Header */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 0;
-    }
-
-    .logo {
-      font-family: var(--font-serif);
-      font-size: 18px;
-      letter-spacing: 0.16em;
-    }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 26px;
-      font-size: 12px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 20px;
-    }
-
-    .nav-links a {
-      position: relative;
-      padding-bottom: 2px;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 1px;
-      background: #000;
-      transition: width 0.15s ease-out;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .nav-cta {
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 5px 14px;
-      border-radius: 999px;
-      border: 1px solid #000;
-    }
-
-    /* Hero */
-    .hero {
-      padding: 84px 0 96px;
-      border-bottom: 1px solid var(--line);
-    }
-
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      grid-template-columns: 1.2fr 1fr;
       gap: 60px;
       align-items: center;
     }
 
     @media (max-width: 880px) {
-      .hero-grid {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 40px;
-      }
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
     }
 
     .hero-label {
       font-size: 11px;
-      letter-spacing: 0.3em;
+      letter-spacing: 0.28em;
       color: var(--muted);
-      text-transform: uppercase;
       margin-bottom: 14px;
+      text-transform: uppercase;
     }
 
     .hero-title {
@@ -159,21 +130,19 @@
     .hero-lead {
       font-size: 14px;
       color: var(--text-sub);
-      max-width: 540px;
-      margin: 0 0 22px;
+      max-width: 550px;
+      margin-bottom: 18px;
     }
 
     .hero-meta {
       font-size: 11px;
       color: var(--muted);
       display: flex;
+      gap: 18px;
       flex-wrap: wrap;
-      gap: 10px 24px;
     }
 
-    .hero-meta-label {
-      font-weight: 500;
-    }
+    /* ---- 円（正弦波入り円） ---- */
 
     .circle-wrap {
       display: flex;
@@ -196,10 +165,7 @@
       border: 1px solid var(--line);
     }
 
-    .circle-main::before {
-      inset: 12%;
-    }
-
+    .circle-main::before { inset: 12%; }
     .circle-main::after {
       inset: 25%;
       border-style: dashed;
@@ -207,58 +173,48 @@
 
     .circle-wave {
       position: absolute;
-      inset: 50% 10%;
+      inset: 50% 8%;
       transform: translateY(-50%);
     }
 
     .circle-caption {
       position: absolute;
-      bottom: 14%;
+      bottom: 15%;
       left: 50%;
       transform: translateX(-50%);
       font-size: 10px;
       letter-spacing: 0.18em;
-      text-transform: uppercase;
       color: var(--muted);
-      padding: 3px 13px;
-      border-radius: 999px;
-      background: #fff;
+      padding: 3px 12px;
+      background: white;
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
     }
 
-    /* 共通セクション */
-    section.section {
+    /* ------------ Section 共通 ------------ */
+
+    section {
       padding: 62px 0 66px;
       border-bottom: 1px solid var(--line);
       position: relative;
-      overflow: hidden;
     }
 
     .section-header {
+      margin-bottom: 28px;
       display: flex;
-      align-items: flex-start;
       justify-content: space-between;
       gap: 24px;
-      margin-bottom: 28px;
     }
 
-    @media (max-width: 780px) {
-      .section-header {
-        flex-direction: column;
-        gap: 14px;
-      }
-    }
-
-    .section-header-main {
-      min-width: 220px;
+    @media (max-width: 800px) {
+      .section-header { flex-direction: column; }
     }
 
     .section-kicker {
       font-size: 11px;
       letter-spacing: 0.3em;
-      text-transform: uppercase;
       color: var(--muted);
+      text-transform: uppercase;
       margin-bottom: 8px;
     }
 
@@ -267,59 +223,29 @@
       font-size: 18px;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
     .section-sub {
       font-size: 13px;
       color: var(--text-sub);
-      max-width: 460px;
+      max-width: 450px;
     }
 
-    /* レイアウトバリエーション */
     .grid-2 {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      grid-template-columns: 1fr 1fr;
       gap: 26px;
     }
 
-    .grid-2.reverse {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-    }
-
     @media (max-width: 880px) {
-      .grid-2,
-      .grid-2.reverse {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      .grid-2 { grid-template-columns: 1fr; }
     }
 
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    @media (max-width: 960px) {
-      .grid-3 {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    /* ブロック（ボーダーで囲まない） */
     .block {
-      padding: 18px 16px 20px;
       background: var(--bg-softer);
+      padding: 18px 16px 20px;
       border-radius: 12px;
-      position: relative;
-    }
-
-    .block-label {
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 6px;
     }
 
     .block-title {
@@ -333,646 +259,312 @@
       color: var(--text-sub);
     }
 
-    .block-body p {
-      margin: 0 0 8px;
-    }
-
-    .soft-list {
-      list-style: none;
-      margin: 4px 0 0;
-      padding: 0;
-      font-size: 13px;
-      color: var(--text-sub);
-    }
-
-    .soft-list li {
-      padding-left: 1.2em;
-      position: relative;
-      margin-bottom: 4px;
-    }
-
-    .soft-list li::before {
-      content: "・";
-      position: absolute;
-      left: 0;
-      top: 0;
-    }
-
-    /* タイムライン */
-    .timeline {
-      margin-top: 6px;
-      padding-left: 16px;
-      border-left: 1px solid var(--line);
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 16px;
-      font-size: 13px;
-      color: var(--text-sub);
-    }
-
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      left: -8px;
-      top: 6px;
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      border: 1px solid #000;
-      background: #fff;
-    }
-
-    .timeline-year {
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-
-    /* 観客セクション用 */
-    .audience-title {
-      font-size: 14px;
-      font-weight: 500;
-      margin-bottom: 6px;
-    }
-
-    .audience-tag {
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
-    .link-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      font-size: 13px;
-      color: var(--text-sub);
-    }
-
-    .link-list li {
-      margin-bottom: 6px;
-    }
-
-    .link-list a {
-      text-decoration: underline;
-    }
-
-    .contact-note {
-      font-size: 12px;
-      color: var(--text-sub);
-      margin-top: 10px;
-    }
-
-    /* デコレーション（波・円・点・折れ線） */
-
-    /* Mission：横長の波ライン */
-    .shape-wave {
-      position: absolute;
-      inset: auto 0 -8px 0;
-      pointer-events: none;
-    }
-
-    .shape-wave svg {
-      width: 100%;
-      height: 22px;
-      display: block;
-    }
-
-    /* MARIMO：軌跡円（円弧が重なる） */
-    .shape-orbit {
-      position: absolute;
-      right: -80px;
-      top: 40px;
-      width: 200px;
-      height: 200px;
-      pointer-events: none;
-      opacity: 0.4;
-    }
-
-    @media (max-width: 880px) {
-      .shape-orbit {
-        right: -40px;
-        top: -10px;
-        width: 160px;
-        height: 160px;
-      }
-    }
-
-    /* STORY：粒子円 */
+    /* 粒子円（Story用） */
     .shape-particles {
       position: absolute;
       left: -60px;
       top: 40px;
       width: 140px;
       height: 140px;
+      opacity: 0.35;
       pointer-events: none;
-      opacity: 0.4;
     }
 
-    @media (max-width: 880px) {
+    @media (max-width: 800px) {
       .shape-particles {
-        left: -40px;
+        left: -25px;
         top: -10px;
       }
     }
 
-    /* Audience：折れ線 */
-    .shape-zline {
-      position: absolute;
-      right: 10%;
-      top: -6px;
-      width: 120px;
-      height: 40px;
-      pointer-events: none;
-      opacity: 0.4;
-    }
+    /* 閉じる装飾は段階的に控えめ */
 
-    /* Contact：斜め点線パターン */
-    .shape-dots {
-      position: absolute;
-      right: -20px;
-      bottom: -20px;
-      width: 160px;
-      height: 80px;
-      pointer-events: none;
-      opacity: 0.25;
-    }
-
-    /* Footer */
     footer {
-      border-top: 1px solid var(--line);
-      padding: 18px 0 22px;
+      padding: 20px 0 24px;
       font-size: 11px;
       color: var(--muted);
+      border-top: 1px solid var(--line);
     }
 
     .footer-inner {
+      width: min(1080px, 100% - 40px);
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
-      gap: 10px;
       flex-wrap: wrap;
     }
   </style>
 </head>
+
 <body>
+  <!-- ---------------- Header ---------------- -->
   <header>
-    <div class="container nav">
+    <div class="nav">
       <div class="logo">UNDERLY</div>
-      <div class="nav-right">
-        <nav class="nav-links">
-          <a href="#mission">MISSION</a>
-          <a href="#marimo">MARIMO</a>
-          <a href="#story">STORY</a>
-          <a href="#audience">FOR YOU</a>
-          <a href="#contact">CONTACT</a>
-        </nav>
-        <a href="#contact" class="nav-cta">TALK</a>
-      </div>
+      <nav class="nav-links">
+        <a href="#mission">MISSION</a>
+        <a href="#marimo">MARIMO</a>
+        <a href="#story">STORY</a>
+        <a href="#contact">CONTACT</a>
+      </nav>
     </div>
   </header>
 
-  <main>
-    <!-- Hero -->
-    <section class="hero">
-      <div class="container hero-grid">
+  <!-- ---------------- HERO ---------------- -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-label">STUDENT PROJECT</div>
+
+        <h1 class="hero-title">
+          考えた形が実物として現れる、  
+          MARIMO コンセプト。
+        </h1>
+
+        <p class="hero-lead">
+          Undelry（ウンデリー）は、高専生三人による学生プロジェクトです。<br />
+          MARIMO は、複数の球体ユニットが連なり、  
+          人が思い描いた形を手がかりに立体的な構造をつくることを目指す  
+          実験的なコンセプトモデルです。
+        </p>
+
+        <div class="hero-meta">
+          <span><span class="hero-meta-label">テーマ</span> 脳波 × 形 × ロボット</span>
+        </div>
+      </div>
+
+      <div class="circle-wrap">
+        <div class="circle-main">
+          <div class="circle-wave">
+            <!-- 周波数を上げた正弦波 -->
+            <svg viewBox="0 0 100 20" preserveAspectRatio="none">
+              <path
+                d="
+                  M0 10
+                  Q 6.25 2 12.5 10
+                  T 25 10
+                  T 37.5 10
+                  T 50 10
+                  T 62.5 10
+                  T 75 10
+                  T 87.5 10
+                  T 100 10
+                "
+                fill="none"
+                stroke="#000"
+                stroke-width="0.8"
+              />
+            </svg>
+          </div>
+          <div class="circle-caption">BRAIN WAVE × FORM</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------------- MISSION ---------------- -->
+  <section id="mission">
+    <div class="container">
+      <div class="section-header">
         <div>
-          <div class="hero-label">STUDENT PROJECT / UNDERLY</div>
-          <h1 class="hero-title">
-            “想像が動き出す” 球体ロボットで、<br />
-            脳波から物理世界までをつなげていく。
-          </h1>
-          <p class="hero-lead">
-            Undelry（ウンデリー）は、高専生三人で動かしている学生プロジェクトです。<br />
-            脳波でイメージした形を手がかりに、小さな球体ロボット
-            <strong>MARIMO</strong> が立体物として組み上がるような未来を、
-            まだ不完全な技術のまま、小さく試し続けています。
-          </p>
-          <div class="hero-meta">
-            <span><span class="hero-meta-label">メンバー</span> 高専生三人</span>
-            <span><span class="hero-meta-label">テーマ</span> 脳波 × ロボット × 空間</span>
-            <span><span class="hero-meta-label">状態</span> 試作と検証を繰り返し中</span>
+          <div class="section-kicker">MISSION</div>
+          <h2 class="section-title">形をつくる新しいアプローチ</h2>
+        </div>
+
+        <div class="section-sub">
+          MARIMO コンセプトが目指すのは、  
+          「形」を人の想像とロボットの動きが協調して生み出すプロセスです。
+          ここでは、その考え方と方向性を整理しています。
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="block">
+          <div class="block-title">想像から構造へ</div>
+          <div class="block-body">
+            脳波計から得られる信号の違いを手がかりに、  
+            人が思い描いた形の特徴をロボット側へ渡す方法を検討しています。  
+            正確な再現ではなく、特徴の抽出と構造生成の関係性を探る試みです。
           </div>
         </div>
-        <div class="circle-wrap">
-          <div class="circle-main" aria-hidden="true">
-            <div class="circle-wave">
-              <!-- 正弦波 -->
-              <svg viewBox="0 0 100 20" preserveAspectRatio="none">
-                <path
-                  d="M0 10
-                     Q 12.5 0 25 10
-                     T 50 10
-                     T 75 10
-                     T 100 10"
-                  fill="none"
-                  stroke="#000"
-                  stroke-width="0.8"
-                />
-              </svg>
-            </div>
-            <div class="circle-caption">BRAIN WAVE × ROBOT</div>
+
+        <div class="block">
+          <div class="block-title">ユニットの集合でつくる形</div>
+          <div class="block-body">
+            MARIMO はひとつのロボットではなく、  
+            複数の球体ユニットが集まることで構造が立ち上がる、  
+            「集合型」のアプローチを採用しています。  
+            ユニットの配置やつながり方によって、多様な形が生まれます。
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Mission：横長＋波 -->
-    <section class="section" id="mission">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-header-main">
-            <div class="section-kicker">MISSION</div>
-            <h2 class="section-title">創造がそのまま動き出す世界へ</h2>
-          </div>
-          <div class="section-sub">
-            頭の中で描いた形が、その場で立ち上がる。  
-            Undelry は、そんな映画のようなシーンに、
-            現実の技術でどこまで近づけるかをテーマにしています。  
-            まだ完成したプロダクトはありませんが、
-            「どんな未来を目指しているか」を、ここで言語化しています。
+  <!-- ---------------- MARIMO ---------------- -->
+  <section id="marimo">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">MARIMO</div>
+          <h2 class="section-title">MARIMO コンセプトについて</h2>
+        </div>
+
+        <div class="section-sub">
+          MARIMO は、小型の球体ユニットが連なり、  
+          人のイメージをもとに立体的な構造を形成することを目指す  
+          コンセプトモデルです。  
+          動作や連結の仕組みについて段階的な検討を進めています。
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="block">
+          <div class="block-title">立体構造の生成</div>
+          <div class="block-body">
+            人が頭の中で思い浮かべる形状の違いを  
+            MARIMO の動きや配置にどのように反映できるかを研究しています。  
+            構造はユニット同士の連携によって成り立ち、  
+            形状に応じて複数のパターンが考えられます。
           </div>
         </div>
 
-        <div class="grid-3">
-          <div class="block">
-            <div class="block-label">FOCUS</div>
-            <div class="block-title">脳波から、形のヒントを取り出す。</div>
-            <div class="block-body">
-              <p>
-                脳波計から得られる信号をきれいに処理し、
-                そこから人のイメージと関係しそうな特徴量を探っています。
-              </p>
-              <p>
-                「きれいに再現する」のではなく、
-                「ロボットと一緒に形を決めていく」体験も含めてデザインしています。
-              </p>
-            </div>
-          </div>
-          <div class="block">
-            <div class="block-label">SCENE</div>
-            <div class="block-title">家具・空間・支持具の“素材”として。</div>
-            <div class="block-body">
-              <p>
-                座りやすい高さのスツール、体を支える補助具、
-                その場にいる人に合わせて形が変わる小さな空間など。
-              </p>
-              <p>
-                MARIMO は、単独のロボットではなく、
-                さまざまな用途に変わりうる「変形する素材」として考えています。
-              </p>
-            </div>
-          </div>
-          <div class="block">
-            <div class="block-label">STANCE</div>
-            <div class="block-title">できていないことを、正直に共有する。</div>
-            <div class="block-body">
-              <p>
-                私たちはまだ、技術的に未完成なところが多いです。  
-                その状態のまま、うまくいった実験も、うまくいかなかった検証も、
-                できるだけ言葉にして外に出すことを大事にしています。
-              </p>
-              <p>
-                「何ができるか」よりも、「何を目指しているか」をまず知ってもらう。  
-                このページは、そのための入り口です。
-              </p>
-            </div>
+        <div class="block">
+          <div class="block-title">連結と配置の仕組み</div>
+          <div class="block-body">
+            球体ユニットがどのように連なり、  
+            どのような方向へ動くことで形が成立するか、  
+            基本となる振る舞いをシミュレーションしながら構造案をまとめています。
           </div>
         </div>
       </div>
-      <!-- 下部の波だけの装飾 -->
-      <div class="shape-wave" aria-hidden="true">
-        <svg viewBox="0 0 100 20" preserveAspectRatio="none">
-          <path
-            d="M0 12
-               Q 10 4 20 12
-               T 40 12
-               T 60 12
-               T 80 12
-               T 100 12"
-            fill="none"
-            stroke="#000"
-            stroke-width="0.5"
-            stroke-dasharray="1 1"
-          />
-        </svg>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- MARIMO：2カラム＋軌跡円 -->
-    <section class="section" id="marimo">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-header-main">
-            <div class="section-kicker">PROJECT</div>
-            <h2 class="section-title">球体ロボット群「MARIMO」</h2>
-          </div>
-          <div class="section-sub">
-            テニスボールほどの球体ロボットが、数十個、数百個と集まり、  
-            一つの形を作る。MARIMO は、そんな「動く素材」を目指した実験です。  
-            まだ試作段階で、実現できている範囲は限定的ですが、
-            イメージしている全体像をここで共有します。
-          </div>
+  <!-- ---------------- STORY ---------------- -->
+  <section id="story">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">STORY</div>
+          <h2 class="section-title">構想の背景と流れ</h2>
         </div>
 
-        <div class="grid-2">
-          <div class="block">
-            <div class="block-label">EXPERIMENT</div>
-            <div class="block-title">MARIMO が目指す体験</div>
-            <div class="block-body">
-              <p>
-                たとえば「少し高めのスツール」を思い浮かべる。  
-                そのときの脳波から、おおまかな形のヒントを取り出し、
-                MARIMO が自律的に動いて立体物の一部を形づくる——。
-              </p>
-              <p>
-                今の段階では、「脳波の取り方」「球体の動かし方」「連結の仕組み」など、
-                それぞれをバラバラに試している状態です。
-              </p>
-              <p>
-                将来的に、それらをどこまで一つの体験としてつなげられるかを、
-                少しずつ検証していきたいと考えています。
-              </p>
-            </div>
-          </div>
-
-          <div class="block">
-            <div class="block-label">TECH PILLARS</div>
-            <div class="block-title">技術的な柱（検証中のテーマ）</div>
-            <ul class="soft-list">
-              <li>脳波計（EEG）からの信号取得と前処理</li>
-              <li>イメージの違いが反映されやすい特徴量の探索</li>
-              <li>球体同士の連結・分離の構造案</li>
-              <li>複数体の移動パターン・経路計画のシミュレーション</li>
-              <li>誤作動時の安全性や止め方の検討</li>
-            </ul>
-            <div class="block-body" style="margin-top:6px;">
-              <p>
-                どれも、すぐに答えが出せるテーマではありませんが、  
-                高専生三人で扱えるスケールに分解しながら、順番に触っています。
-              </p>
-            </div>
-          </div>
+        <div class="section-sub">
+          MARIMO の着想は、形が変わる物体への興味から始まりました。  
+          ここでは、コンセプトがどのような経緯で生まれ、  
+          どのように方向性が整理されてきたかをまとめています。
         </div>
       </div>
-      <!-- 軌跡の円 -->
-      <div class="shape-orbit" aria-hidden="true">
-        <svg viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="34" fill="none" stroke="#000" stroke-width="0.5" />
-          <path d="M15 65 A40 40 0 0 1 85 35" fill="none" stroke="#000" stroke-width="0.5" />
-          <path d="M20 40 A30 30 0 0 0 80 60" fill="none" stroke="#000" stroke-width="0.5" stroke-dasharray="2 2" />
-        </svg>
-      </div>
-    </section>
 
-    <!-- STORY：タイムライン＋粒子円 -->
-    <section class="section" id="story">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-header-main">
-            <div class="section-kicker">STORY</div>
-            <h2 class="section-title">一人の妄想から、高専生三人の挑戦へ</h2>
-          </div>
-          <div class="section-sub">
-            中学生のインターンで生まれた「形が変わる家具」というアイデア。  
-            そこから時間をかけて変化しながら、今の MARIMO につながっています。  
-            大きなドラマがあったわけではなく、迷ったり、やめかけたりしながら続いている、
-            等身大の流れです。
-          </div>
-        </div>
+      <div class="grid-2">
+        <div class="block">
+          <div class="block-title">背景</div>
+          <div class="block-body">
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-year">START</div>
+                形が変化する家具や物体への興味がきっかけとなり、  
+                「複数の球体が集まり、形をつくる」という発想が生まれました。
+              </div>
 
-        <div class="grid-2">
-          <div class="block">
-            <div class="block-label">BACKGROUND</div>
-            <div class="block-title">原点〜立ち上がりまで</div>
-            <div class="block-body">
-              <div class="timeline">
-                <div class="timeline-item">
-                  <div class="timeline-year">MIDDLE SCHOOL</div>
-                  インターンで「人に合わせて形を変える家具」を企画し、  
-                  映画に出てくるマイクロボットのような存在に出会う。  
-                  「脳波で動く球体ロボット群」という妄想が、頭の片隅に残る。
-                </div>
-                <div class="timeline-item">
-                  <div class="timeline-year">AFTER THAT</div>
-                  進路や将来について迷うなかで、
-                  やりたいことの候補が増えすぎて焦る時期が続く。  
-                  友人からの「一番やりたいことは何？」という一言で、
-                  いちばん離れずに残っていたのが MARIMO だとはっきりする。
-                </div>
-                <div class="timeline-item">
-                  <div class="timeline-year">NOW</div>
-                  同じく興味を持ってくれた高専生三人でチームを組み、  
-                  脳波・ロボット・ストーリーのそれぞれを、小さく試す日々が始まる。
-                </div>
+              <div class="timeline-item">
+                <div class="timeline-year">EXPLORE</div>
+                集合型ロボットの可能性を調べる中で、  
+                脳波による“イメージの違い”を手がかりとして扱うアイデアへとつながりました。
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-year">NOW</div>
+                高専生三人のチームで、  
+                コンセプトの整理とプロトタイプ検討を進めています。
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="block">
-            <div class="block-label">LEARNING</div>
-            <div class="block-title">「一人で背負わなくていい」と知ったこと</div>
-            <div class="block-body">
-              <p>
-                スタートアップイベントやコミュニティに参加する中で、  
-                技術の話だけでなく、進路やモヤモヤの話をしてもいい場所があると知りました。
-              </p>
-              <p>
-                うまく言語化できていないアイデアでも、
-                素直に話してみると、一緒に考えてくれる人がいる。  
-                その感覚が、「続けてみよう」という気持ちを支えています。
-              </p>
-              <p>
-                Undelry は、完成したものを見せる場ではなく、  
-                「いま考えていること」を、そのまま出せる場所でありたいと思っています。
-              </p>
-            </div>
+        <div class="block">
+          <div class="block-title">視点の変化</div>
+          <div class="block-body">
+            脳波・ロボティクス・形づくりの関係を調べる中で、  
+            「正確な再現」ではなく  
+            「人とロボットがともに形をつくるプロセス」へ関心が移りました。  
+            現在は、この方向性を軸に探索を続けています。
           </div>
         </div>
       </div>
-      <!-- 粒子円 -->
-      <div class="shape-particles" aria-hidden="true">
-        <svg viewBox="0 0 100 100">
-          <!-- 円周上に点を配置 -->
-          <g fill="#000">
-            <circle cx="50" cy="15" r="1" />
-            <circle cx="70" cy="22" r="1" />
-            <circle cx="82" cy="40" r="1" />
-            <circle cx="82" cy="60" r="1" />
-            <circle cx="70" cy="78" r="1" />
-            <circle cx="50" cy="85" r="1" />
-            <circle cx="30" cy="78" r="1" />
-            <circle cx="18" cy="60" r="1" />
-            <circle cx="18" cy="40" r="1" />
-            <circle cx="30" cy="22" r="1" />
-          </g>
-        </svg>
-      </div>
-    </section>
+    </div>
 
-    <!-- FOR YOU：左右カード＋折れ線 -->
-    <section class="section" id="audience">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-header-main">
-            <div class="section-kicker">FOR YOU</div>
-            <h2 class="section-title">このページを開いているあなたへ</h2>
-          </div>
-          <div class="section-sub">
-            投資家として、あるいは学生として。  
-            Undelry に関わる人は、これから増えていきます。  
-            まだ「完璧な形」ではない前提のまま、一緒に考えてくれる人を探しています。
-          </div>
+    <!-- 粒子円 -->
+    <div class="shape-particles" aria-hidden="true">
+      <svg viewBox="0 0 100 100">
+        <g fill="#000">
+          <circle cx="50" cy="15" r="1" />
+          <circle cx="70" cy="22" r="1" />
+          <circle cx="82" cy="40" r="1" />
+          <circle cx="82" cy="60" r="1" />
+          <circle cx="70" cy="78" r="1" />
+          <circle cx="50" cy="85" r="1" />
+          <circle cx="30" cy="78" r="1" />
+          <circle cx="18" cy="60" r="1" />
+          <circle cx="18" cy="40" r="1" />
+          <circle cx="30" cy="22" r="1" />
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ---------------- CONTACT ---------------- -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">CONTACT</div>
+          <h2 class="section-title">お問い合わせ</h2>
         </div>
 
-        <div class="grid-2 reverse">
-          <div class="block">
-            <div class="audience-tag">FOR INVESTORS</div>
-            <div class="audience-title">投資家・事業会社の方へ</div>
-            <div class="block-body">
-              <p>
-                MARIMO は、「BCI × 変形ロボティクス」という、
-                まだ小さな情報しかない領域にまたがっています。
-              </p>
-              <p>
-                今は、高専生三人の実験レベルの取り組みです。  
-                その上で、次のような形で関わっていただけるとありがたいです。
-              </p>
-              <ul class="soft-list">
-                <li>技術・市場についての見立てや前提の確認</li>
-                <li>実験の場になりうる環境や領域のアイデア</li>
-                <li>将来、法人化を考えるタイミングでの壁打ち</li>
-              </ul>
-              <p>
-                「投資の検討」よりも前に、まず対話の時間をいただけると嬉しいです。
-              </p>
-            </div>
-          </div>
-
-          <div class="block">
-            <div class="audience-tag">FOR STUDENTS</div>
-            <div class="audience-title">脳波・ロボットに興味のある学生へ</div>
-            <div class="block-body">
-              <p>
-                BCI やロボット工学に興味はあるけれど、  
-                どこから入ればいいか分からない——そんな人と一緒に手を動かしたいと考えています。
-              </p>
-              <p>特に、こんな人を歓迎しています。</p>
-              <ul class="soft-list">
-                <li>脳波計や EEG データを触ってみたい</li>
-                <li>制御・組込み・ロボットの基礎を学びながら実験したい</li>
-                <li>「物語」と「技術」の両方に興味がある</li>
-              </ul>
-              <p>
-                固い選考フローなどはありません。  
-                オンラインで少し話してみて、見学や小さなタスクから関わってもらうイメージです。
-              </p>
-            </div>
-          </div>
+        <div class="section-sub">
+          コンセプトや取り組みについてのご質問、ご相談などは  
+          下記よりご連絡いただけます。
         </div>
       </div>
-      <!-- 折れ線 -->
-      <div class="shape-zline" aria-hidden="true">
-        <svg viewBox="0 0 100 40">
-          <polyline
-            points="0,30 40,10 70,25 100,8"
-            fill="none"
-            stroke="#000"
-            stroke-width="0.5"
-          />
-        </svg>
-      </div>
-    </section>
 
-    <!-- CONTACT：点線パターン -->
-    <section class="section" id="contact">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-header-main">
-            <div class="section-kicker">LINKS / CONTACT</div>
-            <h2 class="section-title">Undelry をもう少し知る / 話してみる</h2>
-          </div>
-          <div class="section-sub">
-            まだ途中の状態も含めて、考えていることを note に書き残しています。  
-            コラボレーションや壁打ちの相談は、メールや SNS から気軽に連絡してください。
-          </div>
-        </div>
-
-        <div class="grid-2">
-          <div class="block">
-            <div class="block-label">NOTE</div>
-            <div class="block-title">考えていること・これまでの流れ</div>
-            <ul class="link-list">
-              <li>
-                <a
-                  href="https://note.com/joe_maekawa/n/n8402b98e7da9"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >自己紹介① ─ 僕は、何をやっている人なのか</a
-                >
+      <div class="grid-2">
+        <div class="block">
+          <div class="block-title">LINKS</div>
+          <div class="block-body">
+            <ul style="list-style:none; padding:0; margin:0;">
+              <li style="margin-bottom:6px;">
+                <a href="https://note.com/joe_maekawa/n/n8402b98e7da9" target="_blank" rel="noopener">note：自己紹介①</a>
               </li>
               <li>
-                <a
-                  href="https://note.com/joe_maekawa/n/nd62999a6b3a8"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >京都のスタートアップイベントに参加して、変化した自分。</a
-                >
+                <a href="https://note.com/joe_maekawa/n/nd62999a6b3a8" target="_blank" rel="noopener">note：京都イベントでの記録</a>
               </li>
             </ul>
-            <div class="contact-note">
-              「完成形」ではなく、「過程」を知りたい方に向けた文章です。  
-              Undelry の温度感を感じてもらえたら嬉しいです。
-            </div>
           </div>
+        </div>
 
-          <div class="block">
-            <div class="block-label">CONTACT</div>
-            <div class="block-title">お問い合わせ・壁打ちのご相談</div>
-            <div class="block-body">
-              <ul class="link-list">
-                <!-- ★ 公開前にここを書き換えてください -->
-                <li>メール：<a href="mailto:info@example.com">info@example.com</a></li>
-                <li>X（Twitter）：<a href="#" target="_blank" rel="noopener noreferrer">@undelry</a></li>
-                <li>note：<a href="https://note.com/joe_maekawa" target="_blank" rel="noopener noreferrer">/joe_maekawa</a></li>
-              </ul>
-              <p class="contact-note">
-                高専生三人だけでは見えない視点がたくさんあります。  
-                「ちょっと気になった」くらいの軽い温度感でも、メッセージをもらえるととても助かります。
-              </p>
-            </div>
+        <div class="block">
+          <div class="block-title">連絡先</div>
+          <div class="block-body">
+            <p>メール：<a href="mailto:info@example.com">info@example.com</a></p>
+            <p>X：<a href="#">@undelry</a></p>
           </div>
         </div>
       </div>
-      <!-- 点線パターン -->
-      <div class="shape-dots" aria-hidden="true">
-        <svg viewBox="0 0 100 50">
-          <defs>
-            <pattern id="dots" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
-              <circle cx="1" cy="1" r="0.6" fill="#000" />
-            </pattern>
-          </defs>
-          <rect x="0" y="0" width="100" height="50" fill="url(#dots)" />
-        </svg>
-      </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
+  <!-- ---------------- FOOTER ---------------- -->
   <footer>
-    <div class="container footer-inner">
+    <div class="footer-inner">
       <div>© <span id="year"></span> Undelry.</div>
       <div>Student project by three KOSEN students.</div>
     </div>
   </footer>
 
   <script>
-    document.getElementById("year").textContent =
-      new Date().getFullYear().toString();
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
